@@ -1,5 +1,8 @@
 package com.ssafit.mvc.controller;
 
-public class BoardController {
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+public class BoardController {
+	
 }
