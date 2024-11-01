@@ -5,9 +5,8 @@
 
 	<!-- 댓글 작성 -->
 	<insert id="insertReview" parameterType="Review">
-		INSERT INTO review (writer, board_id, content, reg_date, last_modified_date)
-		VALUES (#{writer}, #{boardId}, #{content}, #{regDate},
-		#{lastModifiedDate})
+		INSERT INTO review (writer, board_id, content)
+		VALUES (#{writer}, #{boardId}, #{content})
 	</insert>
 
 	<!-- 댓글 삭제 -->

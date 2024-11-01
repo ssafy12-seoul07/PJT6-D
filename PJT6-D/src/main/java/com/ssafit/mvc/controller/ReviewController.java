@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ssafit.mvc.model.dto.Review;
 import com.ssafit.mvc.model.service.ReviewService;
 
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/review")
 public class ReviewController {
@@ -24,8 +26,11 @@ public class ReviewController {
 		this.rs = rs;
 	}
 
-	@PostMapping("/write")
-	public ResponseEntity<Review> writeReview(@ModelAttribute Review review) {
+	@PostMapping("/write/{id}")
+	public ResponseEntity<Review> writeReview(@PathVariable("id") int boardId, @RequestBody Review review, HttpSession session) {
+		session.setAttribute("loginUser", "kjlekfnlksdhlfkh");
+		review.setWriter((String)session.getAttribute("loginUser"));
+		review.setBoardId(boardId);
 		rs.writeReview(review);
 		return new ResponseEntity<Review>(review, HttpStatus.CREATED);
 	}

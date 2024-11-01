@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Review {
-	private int id;
-	private String writer;
-	private int boardId;
-	private String content;
+	private int id; // 댓글 구분자 번호 오토
+	private String writer; // user id타고 닉네임을 가져와여함
+	private int boardId; // 어디 게시글에 댓글 달았는지 확인하기위해 board id
+	private String content; // 내용
     private LocalDateTime regDate;  // 날짜 정보만 필요하므로 LocalDate 사용
     private LocalDateTime lastModifiedDate;
     
