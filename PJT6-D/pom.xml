@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ssafit</groupId>
-	<artifactId>PJT6-D-1</artifactId>
+	<artifactId>PJT6-D</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PJT6-D-1</name>
+	<name>PJT6-D</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

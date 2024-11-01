@@ -53,7 +53,6 @@ public class UserController {
 	@PostMapping("")
 	public ResponseEntity<?> signup(@RequestBody User user){
 		user.setId(UUID.randomUUID().toString());
-		user.setRegistDate(LocalDate.now().toString());
 		boolean result = userService.addUser(user);
 		if(result) {
 			return ResponseEntity.status(HttpStatus.CREATED).build();

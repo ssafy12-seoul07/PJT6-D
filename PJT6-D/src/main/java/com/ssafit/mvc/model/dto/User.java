@@ -23,7 +23,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.nickname = nickname;
-		this.registDate = regist_date;
+		this.registDate = registDate;
 		this.grade = grade;
 	}
 
@@ -52,7 +52,7 @@ public class User {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public Date getRegistDate() {
+	public String getRegistDate() {
 		return registDate;
 	}
 	public void setRegistDate(String registDate) {

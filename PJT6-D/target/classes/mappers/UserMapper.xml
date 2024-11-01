@@ -11,4 +11,9 @@
   	SELECT * FROM user
   	WHERE id = #{id};
   </select>
+  
+  <insert id="insertUser" parameterType="User">
+  	INSERT INTO user
+  	VALUE (#{)
+  </insert>
 </mapper>
