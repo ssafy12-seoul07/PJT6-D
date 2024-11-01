@@ -19,7 +19,7 @@ public interface BoardDao {
     public void updateBoard(Board board);
     
     // 게시물 삭제
-    public void deleteBoard(int id);
+    public int deleteBoard(int id);
     
     // 조회수 증가
     public void updateViewCnt(int id);
