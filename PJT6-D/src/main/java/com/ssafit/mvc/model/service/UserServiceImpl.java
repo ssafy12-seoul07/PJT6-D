@@ -33,4 +33,13 @@ public class UserServiceImpl implements UserService{
 		return false;
 	}
 
+	@Override
+	public String login(User user) {
+		User check = userDao.selectByEmail(user.getEmail());
+		if(check!=null && user.getEmail().equals(check.getEmail()) && user.getPassword().equals(check.getPassword())) {
+			return check.getId();
+		}
+		return null;
+	}
+
 }

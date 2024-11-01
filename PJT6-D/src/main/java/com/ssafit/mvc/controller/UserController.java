@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ssafit.mvc.model.dto.User;
 import com.ssafit.mvc.model.service.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -50,14 +52,37 @@ public class UserController {
 	}
 	
 	//회원가입
-	@PostMapping("")
+	@PostMapping("/signup")
 	public ResponseEntity<?> signup(@RequestBody User user){
 		user.setId(UUID.randomUUID().toString());
+		System.out.println(user.getId());
 		boolean result = userService.addUser(user);
 		if(result) {
 			return ResponseEntity.status(HttpStatus.CREATED).build();
 		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
+	}
+	
+	//로그인
+	@PostMapping("/login")
+	public ResponseEntity<?> login(@RequestBody User user, HttpSession session){
+		String id = userService.login(user);
+		
+		if(id==null) return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		else {
+			session.setAttribute("loginUser", id);
+			return new ResponseEntity<String>(id, HttpStatus.OK);
+		}
+	}
+	
+	//로그아웃
+	@GetMapping("/logout")
+	public ResponseEntity<String> logout(HttpSession session){
+		if(session.getAttribute("loginUser")!=null) {
+			session.invalidate();
+			return ResponseEntity.status(HttpStatus.OK).build();
+		}
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 	}
 }

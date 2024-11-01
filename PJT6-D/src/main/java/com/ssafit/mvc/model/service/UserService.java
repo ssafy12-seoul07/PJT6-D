@@ -11,4 +11,6 @@ public interface UserService {
 	public User getUserById(String id);
 
 	public boolean addUser(User user);
+
+	public String login(User user);
 }
