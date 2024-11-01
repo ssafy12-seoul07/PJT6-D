@@ -19,7 +19,7 @@ public interface BoardService {
     public void modifyBoard(Board board);
     
     // 게시물 삭제
-    public void removeBoard(int id);
+    public boolean removeBoard(int id);
     
     // 검색 버튼을 눌렀을 때 처리할 메서드
     public List<Board> search(SearchCondition searchCondition);

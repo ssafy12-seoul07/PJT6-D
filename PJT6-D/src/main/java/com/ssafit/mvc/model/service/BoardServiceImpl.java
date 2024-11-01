@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ssafit.mvc.model.dao.BoardDao;
 import com.ssafit.mvc.model.dto.Board;
@@ -22,38 +23,38 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public List<Board> getBoardList() {
-		// TODO Auto-generated method stub
-		return null;
+		return boardDao.selectAll();
 	}
 
 	@Override
 	public Board readBoard(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		boardDao.updateViewCnt(id);
+		return boardDao.selectOne(id);
 	}
 
+	@Transactional
 	@Override
 	public void writeBoard(Board board) {
-		// TODO Auto-generated method stub
-		
+		boardDao.insertBoard(board);
 	}
 
+	@Transactional
 	@Override
 	public void modifyBoard(Board board) {
-		// TODO Auto-generated method stub
-		
+		boardDao.updateBoard(board);
 	}
 
+	@Transactional
 	@Override
-	public void removeBoard(int id) {
-		// TODO Auto-generated method stub
+	public boolean removeBoard(int id) {
+		int result = boardDao.deleteBoard(id);
+		return result == 1;
 		
 	}
 
 	@Override
 	public List<Board> search(SearchCondition searchCondition) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardDao.search(searchCondition);
 	}
 	
 }
